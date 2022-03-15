@@ -36,11 +36,17 @@ public class CheckingAccount {
     }
 
     public String deposit(double amount) {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than 0.");
+        }
         this.setBalance(this.getBalance() + amount);
         return String.format("The balance after deposit is: $%,.2f", this.getBalance());
     }
 
     public String withdraw(double amount) throws InsufficientFundsException {
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be greater than 0.");
+        }
         double newBalance = this.getBalance() - amount;
         if (newBalance < 0) {
             throw new InsufficientFundsException(Math.abs(newBalance));

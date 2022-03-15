@@ -12,7 +12,7 @@ public class CircleWithException {
     }
 
     public void setRadius(double radius) {
-        if (radius < 0) {
+        if (radius <= 0) {
             throw new IllegalArgumentException("Radius must be greater than 0.");
         }
         this.radius = radius;
@@ -40,7 +40,7 @@ public class CircleWithException {
             System.out.print("Enter radius for circle: ");
             double radius = input.nextDouble();
             CircleWithException circle = new CircleWithException(radius);
-            System.out.print("Area for circle is: " + circle.getArea());
+            System.out.print(String.format("Area for circle is: %.2f", circle.getArea()));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         } catch (Exception e) {
